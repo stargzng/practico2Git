@@ -25,7 +25,7 @@ public class Pantalla extends javax.swing.JFrame {
         nroSecretoTextField = new javax.swing.JTextField();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         entradaTextField = new javax.swing.JTextField();
-        botonAyuda = new javax.swing.JButton();
+        btnRevelar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         segundoDigitoPass = new javax.swing.JPasswordField();
@@ -71,10 +71,10 @@ public class Pantalla extends javax.swing.JFrame {
             }
         });
 
-        botonAyuda.setText("AYUDA!");
-        botonAyuda.addActionListener(new java.awt.event.ActionListener() {
+        btnRevelar.setText("Revelar");
+        btnRevelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonAyudaActionPerformed(evt);
+                btnRevelarActionPerformed(evt);
             }
         });
 
@@ -123,7 +123,7 @@ public class Pantalla extends javax.swing.JFrame {
         );
 
         jDesktopPane1.setLayer(entradaTextField, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(botonAyuda, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(btnRevelar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -135,7 +135,7 @@ public class Pantalla extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
-                .addComponent(botonAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnRevelar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51))
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,7 +155,7 @@ public class Pantalla extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnRevelar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(51, 51, 51)
                 .addComponent(entradaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(61, Short.MAX_VALUE))
@@ -199,7 +199,7 @@ public class Pantalla extends javax.swing.JFrame {
 
     }//GEN-LAST:event_entradaTextFieldKeyTyped
 
-    private void botonAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAyudaActionPerformed
+    private void btnRevelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRevelarActionPerformed
         String nro = String.valueOf(nroSecreto);
         if (ayudas == 2) {
             primerDigitoPass.setEchoChar(nro.charAt(0));
@@ -209,13 +209,12 @@ public class Pantalla extends javax.swing.JFrame {
         
         if (primerDigitoPass.echoCharIsSet()) {
             segundoDigitoPass.setEchoChar(nro.charAt(1));
-//            ayudas = 0;
-            botonAyuda.setEnabled(false); // desactiva el boton despues de pedir 2 ayudas
+            btnRevelar.setEnabled(false); // desactiva el boton despues de pedir la segunda ayuda
             return;
         }
 
         
-    }//GEN-LAST:event_botonAyudaActionPerformed
+    }//GEN-LAST:event_btnRevelarActionPerformed
 
     private void primerDigitoPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_primerDigitoPassActionPerformed
         // TODO add your handling code here:
@@ -254,7 +253,7 @@ public class Pantalla extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonAyuda;
+    private javax.swing.JButton btnRevelar;
     private javax.swing.JTextField entradaTextField;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
