@@ -8,8 +8,11 @@ public class Pantalla extends javax.swing.JFrame {
         initComponents();
         nroSecreto = (int) (Math.random() * 900) + 100;
         nroSecretoTextField.setText("$$$");
+        primerDigitoPass.setEchoChar('$');
+        segundoDigitoPass.setEchoChar('$');
+        tercerDigitoPass.setEchoChar('$');
 //        nroSecretoTextField.setText(String.valueOf(nroSecreto));
-//        desarme();
+        desarme();
 
     }
 
@@ -18,8 +21,8 @@ public class Pantalla extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
         nroSecretoTextField = new javax.swing.JTextField();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
         entradaTextField = new javax.swing.JTextField();
         botonAyuda = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -39,11 +42,6 @@ public class Pantalla extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Adiviná");
-        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        setLocationByPlatform(true);
-
         nroSecretoTextField.setEditable(false);
         nroSecretoTextField.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         nroSecretoTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -52,6 +50,11 @@ public class Pantalla extends javax.swing.JFrame {
                 nroSecretoTextFieldActionPerformed(evt);
             }
         });
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Adiviná");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setLocationByPlatform(true);
 
         entradaTextField.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         entradaTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -67,7 +70,7 @@ public class Pantalla extends javax.swing.JFrame {
             }
         });
 
-        botonAyuda.setText("ayuda");
+        botonAyuda.setText("AYUDA!");
         botonAyuda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonAyudaActionPerformed(evt);
@@ -76,16 +79,32 @@ public class Pantalla extends javax.swing.JFrame {
 
         jLabel1.setText("CODIGO SECRETO");
 
-        segundoDigitoPass.setText("jPasswordField1");
+        segundoDigitoPass.setEditable(false);
+        segundoDigitoPass.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        segundoDigitoPass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        segundoDigitoPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                segundoDigitoPassActionPerformed(evt);
+            }
+        });
 
-        primerDigitoPass.setText("jPasswordField1");
+        primerDigitoPass.setEditable(false);
+        primerDigitoPass.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        primerDigitoPass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         primerDigitoPass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 primerDigitoPassActionPerformed(evt);
             }
         });
 
-        tercerDigitoPass.setText("jPasswordField1");
+        tercerDigitoPass.setEditable(false);
+        tercerDigitoPass.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        tercerDigitoPass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        tercerDigitoPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tercerDigitoPassActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -105,14 +124,13 @@ public class Pantalla extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(tercerDigitoPass, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(segundoDigitoPass, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(tercerDigitoPass, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(primerDigitoPass, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(primerDigitoPass, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(segundoDigitoPass, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
-        jDesktopPane1.setLayer(nroSecretoTextField, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(entradaTextField, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(botonAyuda, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -125,38 +143,31 @@ public class Pantalla extends javax.swing.JFrame {
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
-                .addComponent(nroSecretoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(entradaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botonAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(69, 69, 69))
+                .addGap(40, 316, Short.MAX_VALUE))
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
+                .addComponent(botonAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51))
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(entradaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nroSecretoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(entradaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(62, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botonAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(98, 98, 98))))
+                        .addComponent(jLabel1)
+                        .addGap(47, 47, 47)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(entradaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(94, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -173,29 +184,22 @@ public class Pantalla extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-//    private void desarme() {
-//
-//        String nro = String.valueOf(nroSecreto);
-//
-//        
-//        primerDigito.setText(""+nro.charAt(0));
-//        segundoDigito.setText(""+nro.charAt(1));
-//        tercerDigito.setText(""+nro.charAt(2));
-//        
-//        //borrar
-////        digitoUno.setText(""+nro.charAt(0));
-////        digitoDos.setText(""+nro.charAt(1));
-////        digitoTres.setText(""+nro.charAt(2));
-//        
-//    }
+    private void desarme() {
+
+        String nro = String.valueOf(nroSecreto);
+
+        primerDigitoPass.setText("" + nro.charAt(0));
+        segundoDigitoPass.setText(""+nro.charAt(1));
+        tercerDigitoPass.setText(""+nro.charAt(2));
+        
+    }
 
 
     private void nroSecretoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nroSecretoTextFieldActionPerformed
     }//GEN-LAST:event_nroSecretoTextFieldActionPerformed
 
     private void entradaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entradaTextFieldActionPerformed
-
+        
     }//GEN-LAST:event_entradaTextFieldActionPerformed
 
     private void entradaTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_entradaTextFieldKeyTyped
@@ -206,12 +210,18 @@ public class Pantalla extends javax.swing.JFrame {
 
     private void primerDigitoPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_primerDigitoPassActionPerformed
         
-        
     }//GEN-LAST:event_primerDigitoPassActionPerformed
 
     private void botonAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAyudaActionPerformed
-      
     }//GEN-LAST:event_botonAyudaActionPerformed
+
+    private void tercerDigitoPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tercerDigitoPassActionPerformed
+       
+    }//GEN-LAST:event_tercerDigitoPassActionPerformed
+
+    private void segundoDigitoPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_segundoDigitoPassActionPerformed
+        
+    }//GEN-LAST:event_segundoDigitoPassActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
