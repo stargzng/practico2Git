@@ -3,15 +3,16 @@ package Pantalla;
 public class Pantalla extends javax.swing.JFrame {
 
     private int nroSecreto;
+    private int ayudas = 2;
 
     public Pantalla() {
         initComponents();
         nroSecreto = (int) (Math.random() * 900) + 100;
-        nroSecretoTextField.setText("$$$");
+        System.out.println(nroSecreto); // sirve como control nada mas
         primerDigitoPass.setEchoChar('$');
         segundoDigitoPass.setEchoChar('$');
         tercerDigitoPass.setEchoChar('$');
-//        nroSecretoTextField.setText(String.valueOf(nroSecreto));
+
         desarme();
 
     }
@@ -82,11 +83,6 @@ public class Pantalla extends javax.swing.JFrame {
         segundoDigitoPass.setEditable(false);
         segundoDigitoPass.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         segundoDigitoPass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        segundoDigitoPass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                segundoDigitoPassActionPerformed(evt);
-            }
-        });
 
         primerDigitoPass.setEditable(false);
         primerDigitoPass.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -100,11 +96,6 @@ public class Pantalla extends javax.swing.JFrame {
         tercerDigitoPass.setEditable(false);
         tercerDigitoPass.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         tercerDigitoPass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        tercerDigitoPass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tercerDigitoPassActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -141,33 +132,33 @@ public class Pantalla extends javax.swing.JFrame {
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(jLabel1)
-                .addGap(40, 316, Short.MAX_VALUE))
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
                 .addComponent(botonAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51))
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(entradaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(entradaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(166, 166, 166)
+                        .addComponent(jLabel1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel1)
+                .addGap(27, 27, 27)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(47, 47, 47)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(51, 51, 51)
                 .addComponent(entradaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -208,20 +199,27 @@ public class Pantalla extends javax.swing.JFrame {
 
     }//GEN-LAST:event_entradaTextFieldKeyTyped
 
-    private void primerDigitoPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_primerDigitoPassActionPerformed
-        
-    }//GEN-LAST:event_primerDigitoPassActionPerformed
-
     private void botonAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAyudaActionPerformed
+        String nro = String.valueOf(nroSecreto);
+        if (ayudas == 2) {
+            primerDigitoPass.setEchoChar(nro.charAt(0));
+            ayudas--;
+            return;
+        }
+        
+        if (primerDigitoPass.echoCharIsSet()) {
+            segundoDigitoPass.setEchoChar(nro.charAt(1));
+//            ayudas = 0;
+            botonAyuda.setEnabled(false); // desactiva el boton despues de pedir 2 ayudas
+            return;
+        }
+
+        
     }//GEN-LAST:event_botonAyudaActionPerformed
 
-    private void tercerDigitoPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tercerDigitoPassActionPerformed
-       
-    }//GEN-LAST:event_tercerDigitoPassActionPerformed
-
-    private void segundoDigitoPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_segundoDigitoPassActionPerformed
-        
-    }//GEN-LAST:event_segundoDigitoPassActionPerformed
+    private void primerDigitoPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_primerDigitoPassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_primerDigitoPassActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
