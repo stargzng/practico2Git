@@ -1,6 +1,7 @@
 package Pantalla;
 
 import java.util.Random;
+import javax.swing.JOptionPane;
 
 public class Pantalla extends javax.swing.JFrame {
 
@@ -33,12 +34,10 @@ public class Pantalla extends javax.swing.JFrame {
         entradaTextField = new javax.swing.JTextField();
         btnRevelar = new javax.swing.JButton();
         lbcodigo = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        PassjPanel = new javax.swing.JPanel();
         segundoDigitoPass = new javax.swing.JPasswordField();
         primerDigitoPass = new javax.swing.JPasswordField();
         tercerDigitoPass = new javax.swing.JPasswordField();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -104,12 +103,17 @@ public class Pantalla extends javax.swing.JFrame {
         tercerDigitoPass.setEditable(false);
         tercerDigitoPass.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         tercerDigitoPass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        tercerDigitoPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tercerDigitoPassActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout PassjPanelLayout = new javax.swing.GroupLayout(PassjPanel);
+        PassjPanel.setLayout(PassjPanelLayout);
+        PassjPanelLayout.setHorizontalGroup(
+            PassjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PassjPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(primerDigitoPass, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -118,80 +122,57 @@ public class Pantalla extends javax.swing.JFrame {
                 .addComponent(tercerDigitoPass, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        PassjPanelLayout.setVerticalGroup(
+            PassjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PassjPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(PassjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(tercerDigitoPass, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(PassjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(primerDigitoPass, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(segundoDigitoPass, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
-        jLabel1.setText("Por favor,ingresa exactamente 3 numeros");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(81, 81, 81)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         jDesktopPane1.setLayer(entradaTextField, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(btnRevelar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(lbcodigo, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jPanel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(PassjPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(entradaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(33, 33, 33)
+                        .addComponent(PassjPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(btnRevelar))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGap(166, 166, 166)
-                        .addComponent(lbcodigo)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnRevelar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                        .addComponent(lbcodigo))
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addComponent(entradaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(137, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(lbcodigo)
-                .addGap(27, 27, 27)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRevelar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(btnRevelar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(PassjPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addComponent(entradaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addGap(55, 55, 55))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -223,6 +204,30 @@ public class Pantalla extends javax.swing.JFrame {
 
     private void entradaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entradaTextFieldActionPerformed
         
+        String nro = Integer.toString(nroSecreto);
+        String entrada = entradaTextField.getText();
+        
+        //JOptionPane.showMessageDialog(null, "Mensaje de advertencia", "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
+        
+        if (entrada.length() != 3) {
+            JOptionPane.showMessageDialog(this, "porfavor, ingrese 3 numeros");
+            return;
+        }
+        
+        if(!entradaTextField.getText().isEmpty()){
+            
+            if (entrada.charAt(0) == nro.charAt(0)) {
+                primerDigitoPass.setEchoChar(nro.charAt(0));
+            } 
+            
+            if (entrada.charAt(1) == nro.charAt(1)) {
+                segundoDigitoPass.setEchoChar(nro.charAt(1));
+            }
+            
+            if (entrada.charAt(2) == nro.charAt(2)) {
+                tercerDigitoPass.setEchoChar(nro.charAt(2));
+            } 
+        } 
     }//GEN-LAST:event_entradaTextFieldActionPerformed
 
     private void entradaTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_entradaTextFieldKeyTyped
@@ -266,6 +271,10 @@ public class Pantalla extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_primerDigitoPassActionPerformed
 
+    private void tercerDigitoPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tercerDigitoPassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tercerDigitoPassActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -299,13 +308,11 @@ public class Pantalla extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel PassjPanel;
     private javax.swing.JButton btnRevelar;
     private javax.swing.JTextField entradaTextField;
     private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lbcodigo;
     private javax.swing.JTextField nroSecretoTextField;
     private javax.swing.JPasswordField primerDigitoPass;
