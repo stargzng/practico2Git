@@ -185,10 +185,9 @@ public class Pantalla extends javax.swing.JFrame {
 
         String nro = String.valueOf(nroSecreto);
 
-        primerDigitoPass.setText("" + nro.charAt(0));
+        primerDigitoPass.setText(""+ nro.charAt(0));
         segundoDigitoPass.setText(""+nro.charAt(1));
         tercerDigitoPass.setText(""+nro.charAt(2));
-        
     }
 
 
@@ -200,9 +199,23 @@ public class Pantalla extends javax.swing.JFrame {
     }//GEN-LAST:event_entradaTextFieldActionPerformed
 
     private void entradaTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_entradaTextFieldKeyTyped
-
-        //ESTE METODO CONTROLA EL "EVENTO" AL PRESIONAR una TECLA EN EL CAMPO DE TEXTO 'ingrese 3 numeros' -> "TextFieldActionPerformed"        
-
+        //ESTE METODO CONTROLA EL "EVENTO" AL PRESIONAR una TECLA EN EL CAMPO DE TEXTO 'ingrese 3 numeros' -> "TextFieldActionPerformed"    
+        char caracter = evt.getKeyChar();
+        String textoingresado = entradaTextField.getText() + caracter;
+        
+        //sirve para que solo permita ingresar numeros
+        if (!Character.isDigit(caracter)) {
+            evt.consume();
+            return;
+        }
+        
+        //sirve para que no ingresen mas de 3 numeros
+        if (textoingresado.length() > 3) {
+            evt.consume();
+            return;
+        }
+        
+        
     }//GEN-LAST:event_entradaTextFieldKeyTyped
 
     private void btnRevelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRevelarActionPerformed
