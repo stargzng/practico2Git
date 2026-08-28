@@ -1,5 +1,7 @@
 package Pantalla;
 
+import java.util.Random;
+
 public class Pantalla extends javax.swing.JFrame {
 
     private int nroSecreto;
@@ -8,8 +10,11 @@ public class Pantalla extends javax.swing.JFrame {
 
     public Pantalla() {
         initComponents();
-        nroSecreto = (int) (Math.random() * 900) + 100;
+        
+        Random random = new Random();
+        nroSecreto = random.nextInt(900) + 100;
         System.out.println(nroSecreto); // sirve como control nada mas
+        
         primerDigitoPass.setEchoChar('$');
         segundoDigitoPass.setEchoChar('$');
         tercerDigitoPass.setEchoChar('$');
