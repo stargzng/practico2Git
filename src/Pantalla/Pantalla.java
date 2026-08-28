@@ -4,6 +4,7 @@ public class Pantalla extends javax.swing.JFrame {
 
     private int nroSecreto;
     private int ayudas = 2;
+    private int intentos = 0;
 
     public Pantalla() {
         initComponents();
