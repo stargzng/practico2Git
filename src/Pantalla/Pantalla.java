@@ -11,11 +11,11 @@ public class Pantalla extends javax.swing.JFrame {
 
     public Pantalla() {
         initComponents();
-        
+
         Random random = new Random();
         nroSecreto = random.nextInt(900) + 100;
         System.out.println(nroSecreto); // sirve como control nada mas
-        
+
         primerDigitoPass.setEchoChar('$');
         segundoDigitoPass.setEchoChar('$');
         tercerDigitoPass.setEchoChar('$');
@@ -38,6 +38,7 @@ public class Pantalla extends javax.swing.JFrame {
         segundoDigitoPass = new javax.swing.JPasswordField();
         primerDigitoPass = new javax.swing.JPasswordField();
         tercerDigitoPass = new javax.swing.JPasswordField();
+        jPanel2 = new javax.swing.JPanel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -134,10 +135,24 @@ public class Pantalla extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 114, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 99, Short.MAX_VALUE)
+        );
+
         jDesktopPane1.setLayer(entradaTextField, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(btnRevelar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(lbcodigo, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(PassjPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -155,8 +170,10 @@ public class Pantalla extends javax.swing.JFrame {
                         .addComponent(lbcodigo))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGap(67, 67, 67)
-                        .addComponent(entradaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(137, Short.MAX_VALUE))
+                        .addComponent(entradaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(68, 68, 68)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,14 +182,20 @@ public class Pantalla extends javax.swing.JFrame {
                 .addComponent(lbcodigo)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(btnRevelar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(PassjPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                .addComponent(entradaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55))
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                .addGap(37, 37, 37)
+                                .addComponent(btnRevelar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                .addGap(28, 28, 28)
+                                .addComponent(PassjPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                        .addComponent(entradaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(55, 55, 55))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -193,9 +216,9 @@ public class Pantalla extends javax.swing.JFrame {
 
         String nro = String.valueOf(nroSecreto);
 
-        primerDigitoPass.setText(""+ nro.charAt(0));
-        segundoDigitoPass.setText(""+nro.charAt(1));
-        tercerDigitoPass.setText(""+nro.charAt(2));
+        primerDigitoPass.setText("" + nro.charAt(0));
+        segundoDigitoPass.setText("" + nro.charAt(1));
+        tercerDigitoPass.setText("" + nro.charAt(2));
     }
 
 
@@ -203,68 +226,72 @@ public class Pantalla extends javax.swing.JFrame {
     }//GEN-LAST:event_nroSecretoTextFieldActionPerformed
 
     private void entradaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entradaTextFieldActionPerformed
-        
+
         String nro = Integer.toString(nroSecreto);
         String entrada = entradaTextField.getText();
-        
-        //JOptionPane.showMessageDialog(null, "Mensaje de advertencia", "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
-        
+
         if (entrada.length() != 3) {
             JOptionPane.showMessageDialog(this, "porfavor, ingrese 3 numeros");
             return;
         }
-        
-        if(!entradaTextField.getText().isEmpty()){
-            
+
+        if (!entradaTextField.getText().isEmpty()) {
+
             if (entrada.charAt(0) == nro.charAt(0)) {
                 primerDigitoPass.setEchoChar(nro.charAt(0));
-            } 
-            
+            }
+
             if (entrada.charAt(1) == nro.charAt(1)) {
                 segundoDigitoPass.setEchoChar(nro.charAt(1));
             }
-            
+
             if (entrada.charAt(2) == nro.charAt(2)) {
                 tercerDigitoPass.setEchoChar(nro.charAt(2));
-            } 
-        } 
+            }
+        }
     }//GEN-LAST:event_entradaTextFieldActionPerformed
 
     private void entradaTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_entradaTextFieldKeyTyped
         //ESTE METODO CONTROLA EL "EVENTO" AL PRESIONAR una TECLA EN EL CAMPO DE TEXTO 'ingrese 3 numeros' -> "TextFieldActionPerformed"    
         char caracter = evt.getKeyChar();
         String textoingresado = entradaTextField.getText() + caracter;
-        
+
         //sirve para que solo permita ingresar numeros
         if (!Character.isDigit(caracter)) {
             evt.consume();
             return;
         }
-        
+
         //sirve para que no ingresen mas de 3 numeros
         if (textoingresado.length() > 3) {
             evt.consume();
             return;
         }
-        
-        
+
+
     }//GEN-LAST:event_entradaTextFieldKeyTyped
 
     private void btnRevelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRevelarActionPerformed
         String nro = String.valueOf(nroSecreto);
+
+        if (ayudas == 0) {
+            JOptionPane.showMessageDialog(this, "ya no tiene mas revelaciones!");
+        }
+
         if (ayudas == 2) {
             primerDigitoPass.setEchoChar(nro.charAt(0));
             ayudas--;
             return;
         }
-        
+
         if (primerDigitoPass.echoCharIsSet()) {
             segundoDigitoPass.setEchoChar(nro.charAt(1));
-            btnRevelar.setEnabled(false); // desactiva el boton despues de pedir la segunda ayuda
+            ayudas--;
+            //btnRevelar.setEnabled(false); // desactiva el boton despues de pedir la segunda ayuda
             return;
         }
 
-        
+
     }//GEN-LAST:event_btnRevelarActionPerformed
 
     private void primerDigitoPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_primerDigitoPassActionPerformed
@@ -313,6 +340,7 @@ public class Pantalla extends javax.swing.JFrame {
     private javax.swing.JTextField entradaTextField;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lbcodigo;
     private javax.swing.JTextField nroSecretoTextField;
     private javax.swing.JPasswordField primerDigitoPass;
