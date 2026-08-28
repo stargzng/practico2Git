@@ -236,6 +236,8 @@ public class Pantalla extends javax.swing.JFrame {
         }
 
         if (!entradaTextField.getText().isEmpty()) {
+            
+            intentos++;
 
             if (entrada.charAt(0) == nro.charAt(0)) {
                 primerDigitoPass.setEchoChar(nro.charAt(0));
@@ -247,6 +249,10 @@ public class Pantalla extends javax.swing.JFrame {
 
             if (entrada.charAt(2) == nro.charAt(2)) {
                 tercerDigitoPass.setEchoChar(nro.charAt(2));
+            }
+            
+            if (nro.equals(entrada)) {
+                JOptionPane.showMessageDialog(this, "Ganaste!\nintentos totales: " + intentos +"\ncodigo secreto: " + nroSecreto,"Ganaste", JOptionPane.INFORMATION_MESSAGE);
             }
         }
     }//GEN-LAST:event_entradaTextFieldActionPerformed
