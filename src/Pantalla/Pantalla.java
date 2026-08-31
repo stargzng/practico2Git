@@ -48,6 +48,7 @@ public class Pantalla extends javax.swing.JFrame {
         primerDigitoPass = new javax.swing.JPasswordField();
         tercerDigitoPass = new javax.swing.JPasswordField();
         lblImagenTrofeo = new javax.swing.JLabel();
+        lblMensaje = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -162,11 +163,14 @@ public class Pantalla extends javax.swing.JFrame {
 
         lblImagenTrofeo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
 
+        lblMensaje.setText("Pista");
+
         jDesktopPane1.setLayer(entradaTextField, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(btnRevelar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(lbcodigo, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(PassjPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(lblImagenTrofeo, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(lblMensaje, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -186,8 +190,13 @@ public class Pantalla extends javax.swing.JFrame {
                 .addComponent(lblImagenTrofeo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(lbcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(lbcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addComponent(lblMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
@@ -203,7 +212,9 @@ public class Pantalla extends javax.swing.JFrame {
                     .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(btnRevelar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lblImagenTrofeo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addGap(16, 16, 16)
+                .addComponent(lblMensaje)
+                .addContainerGap(109, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -246,7 +257,14 @@ public class Pantalla extends javax.swing.JFrame {
         if (!entradaTextField.getText().isEmpty()) {
 
             intentos++;
-
+            int intento = Integer.parseInt(entrada);
+            
+            if (intento < nroSecreto) {
+                lblMensaje.setText("Mas alto");
+            }else if (intento > nroSecreto) {
+                lblMensaje.setText("Mas bajo");
+            }
+            
             if (entrada.charAt(0) == nro.charAt(0)) {
                 primerDigitoPass.setEchoChar(nro.charAt(0));
             }
@@ -384,6 +402,7 @@ public class Pantalla extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lbcodigo;
     private javax.swing.JLabel lblImagenTrofeo;
+    private javax.swing.JLabel lblMensaje;
     private javax.swing.JTextField nroSecretoTextField;
     private javax.swing.JPasswordField primerDigitoPass;
     private javax.swing.JPasswordField segundoDigitoPass;
